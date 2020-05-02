@@ -12,6 +12,12 @@ public class LambdaMain implements RequestHandler<Map<String, String>, String> {
 
     @Override
     public String handleRequest(Map<String, String> input, Context context) {
+
+        System.err.println("AmazonDynamoDB is being loaded from "
+                + AmazonDynamoDB.class.getProtectionDomain().getCodeSource());
+        System.err.println("JsonUnmarshallerContext is being loaded from "
+                + com.amazonaws.transform.JsonUnmarshallerContext.class.getProtectionDomain().getCodeSource());
+
         AmazonDynamoDB client = AmazonDynamoDBClientBuilder
                 .standard()
                 .withEndpointConfiguration(

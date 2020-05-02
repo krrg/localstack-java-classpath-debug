@@ -24,6 +24,7 @@ custom:
       S3: http://localhost:4566
       CloudFormation: http://localhost:4566
       STS: http://localhost:4566
+      Logs: http://localhost:4566
 
     autostart: false
 
