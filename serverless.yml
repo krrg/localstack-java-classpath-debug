@@ -1,0 +1,32 @@
+service: serverless-java-example
+
+frameworkVersion: ">=1.2.0 <2.0.0"
+
+provider:
+  name: aws
+  runtime: java8
+  deploymentBucket:
+    name: example-bucket
+
+package:
+  artifact: build/distributions/serverless-java-example.zip
+
+functions:
+  example:
+    handler: io.github.krrg.LambdaMain
+
+custom:
+  localstack:
+    stages:
+      - local
+    endpoints:
+      Lambda: http://localhost:4566
+      S3: http://localhost:4566
+      CloudFormation: http://localhost:4566
+      STS: http://localhost:4566
+
+    autostart: false
+
+
+plugins:
+  - serverless-localstack
